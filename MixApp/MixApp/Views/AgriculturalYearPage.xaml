@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MixApp.Views.AgriculturalYearPage"
+             Title="Сельхоз. год">
+    <ContentPage.Resources>
+        <!-- Implicit styles -->
+        <Style TargetType="{x:Type Entry}">
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource AppBackgroundColor}" />
+        </Style>
+
+        <Style TargetType="Button"
+               ApplyToDerivedTypes="True"
+               CanCascade="True">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="BackgroundColor" Value="#1976D2" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+    </ContentPage.Resources>
+
+    <StackLayout Margin="{StaticResource PageMargin}">
+        <StackLayout x:Name="agriculturalYearStack">
+            <Label Text="Сельхоз. год" />
+            <Entry Placeholder="Введите сельхоз. год"
+                   Text="{Binding Name}"/>
+            <Label Text="Дата окончания" />
+            <DatePicker Format="dd.MM.yyyy"
+                        Date="{Binding FinishDate}" />
+        </StackLayout>
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Сохранить"
+                        Command="{Binding ListViewModel.SaveAgriculturalYearCommand}"
+                        CommandParameter="{Binding}" />
+                <Button Grid.Column="1"
+                        Text="Удалить"
+                        Command="{Binding ListViewModel.DeleteAgriculturalYearCommand}"
+                        CommandParameter="{Binding}" />
+            </Grid>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

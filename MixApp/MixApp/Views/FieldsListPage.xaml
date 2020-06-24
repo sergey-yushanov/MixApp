@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MixApp.Views.FieldsListPage"
+             Title="Поля">
+    <ContentPage.Resources>
+        <!-- Implicit styles -->
+        <Style TargetType="{x:Type ListView}">
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource AppBackgroundColor}" />
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+"
+                     Command="{Binding CreateFieldCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ListView x:Name="fieldsList"
+              Margin="{StaticResource PageMargin}"
+              ItemsSource="{Binding fields}"
+              SelectedItem="{Binding SelectedField, Mode=TwoWay}"
+              HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Name}"
+                          TextColor="Black"
+                          Detail="{Binding Code}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    
+</ContentPage>
